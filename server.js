@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
+import cron from "cron";
 //?Custom File
 import { dbConnection } from "./DB/dbConnection.js";
 import { allRoutes } from "./src/Modules/index.routes.js";
@@ -19,3 +20,7 @@ app.use(express.static("uploads"));
 
 //? all route
 allRoutes(app);
+
+cron.schedule("*/10 * * * *", async () => {
+  await axios.get("https://to-do-list-azzl.onrender.com/toDos");
+});
