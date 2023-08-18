@@ -3,10 +3,11 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
-import cron from "cron";
+import cron from "node-cron";
 //?Custom File
 import { dbConnection } from "./DB/dbConnection.js";
 import { allRoutes } from "./src/Modules/index.routes.js";
+import axios from "axios";
 
 const app = express();
 dotenv.config();
